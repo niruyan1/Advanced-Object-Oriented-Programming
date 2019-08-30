@@ -1,0 +1,350 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0075)https://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab5/lab5.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="author" content="Burton Ma">
+  <title>EECS2030 Lab 5</title>
+  <style>
+*{margin:0;padding:0;}
+body{background:#d2d4d5;color:#303030;font:100% Verdana,Tahoma,Sans-Serif;text-align:center;}
+p{font-size:1em;margin:0 0 16px;}
+p.tt{font-size: 10em; font: "Courier New",Courier,monospace;}
+a{color:#00f;text-decoration:none;}
+a:hover{color:#88f;text-decoration:underline;}
+h1{font-size:1.6em;margin:0 0 8px;}
+h2{font-size:1.4em;margin:0 0 8px;}
+h3{font-size:1.2em;margin:0 0 8px;}
+ol
+{
+font-size:1em;
+padding: 0;
+margin-left: 3em;
+margin-bottom: 1ex;
+}
+ul
+{
+font-size:1em;
+padding: 0;
+margin-left: 3em;
+margin-bottom: 1ex;
+}
+li
+{
+margin: 0 0 1ex 0;
+}
+code
+{
+  font-weight: bold;
+  font-size: 120%;
+}
+table
+{
+margin-left: 0em;
+}
+
+td
+{
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+}
+
+.btt
+{ 
+  font-size:1.2em;
+  font-weight: bold;
+  font-family: "Courier New",Courier,monospace;
+}
+
+td.btt
+{ 
+  font-size:1.1em;
+  font-weight: bold;
+  font-family: "Courier New",Courier,monospace;
+}
+
+math {
+  padding-top: 1em;
+}
+
+mtd {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.red
+{
+color: red;
+}
+
+.blue
+{
+color: blue;
+}
+
+pre {
+ font-size: 120%;
+ font-weight: bold;
+ line-height: 120%;
+ margin: 1em;
+ padding-top: 0.2em;
+ padding-bottom: 0.2em;
+ padding-left: 1em;
+ padding-right: 1em;
+ border-style: solid;
+ border-left-width: 1em;
+ border-top-width: thin;
+ border-right-width: thin;
+ border-bottom-width: thin;
+ border-color: #95ABD0;
+ color: #000000;
+ background-color: #FFFFFF;
+}
+
+
+pre.math {
+ font-size: 120%;
+ font-weight: bold;
+ line-height: 120%;
+ margin: 1em;
+ padding-top: 0.2em;
+ padding-bottom: 0.2em;
+ padding-left: 1em;
+ padding-right: 1em;
+ border-style: solid;
+ border-left-width: thin;
+ border-top-width: thin;
+ border-right-width: thin;
+ border-bottom-width: thin;
+ border-color: #95ABD0;
+ color: #000000;
+ background-color: #FFFFFF;
+ text-align:center;
+}
+
+#container{background:#fff;margin:20px auto;padding:10px 10px 1px;text-align:left;width:1100px;}
+
+.header{background:#d2d4d5;clear:both;margin:0 0 10px;padding:10px;}
+.header h1{font-size:1.8em;letter-spacing:-1px;margin:0;padding:10px 0px 10px 0px;color:#ffffff;}
+.header p{font-size:1.25em;font-weight:700;margin:0;padding:0 0 10px 10px;}
+
+.mainmenu{clear:both;margin:0 0 10px;}
+.mainmenu ul{background:#f0f0f0;list-style:none;width:100%;}
+.mainmenu li{float:left;list-style:none;margin:0 0 10px;}
+.mainmenu li a{background:#f0f0f0;border-right:10px solid #fff;display:block;float:left;font-size:1.1em;font-weight:700;padding:6px 10px;}
+.mainmenu li a:hover{background:#f5e9d9;display:block;padding:6px 10px;}
+
+.breadcrumbs{background:#f0f0f0;clear:both;font-size:1.1em;font-weight:700;margin:0 0 10px;padding:10px;text-decoration:none;}
+.breadcrumbs p{margin:0;}
+
+.headline{border-left:20px solid #d56e30;clear:both;margin:0 0 10px;padding:0 10px;}
+.headline h1{margin:0;}
+
+.singlecontent{background:#f0f0f0;clear:both;line-height:1.4em;margin:0 0 10px;padding:10px 10px 1px;}
+
+.doublecontent{background:#f0f0f0;clear:both;line-height:1.4em;margin:0 0 10px;padding:10px 10px 1px;}
+.doubleleft{float:left;width:39%;}
+.doubleright{float:right;width:57%;}
+
+.footer{background:#f0f0e0;clear:both;color:gray;margin:0 0 10px;padding:10px;text-align:center;}
+.footer p{margin:0;}
+
+.clear{clear:both;}
+</style>
+</head>
+
+<body>
+<!-- Layout setting -->
+<div id="container">
+
+<!-- Header block -->
+<div class="header">
+  <h1>EECS2030 Lab 5</h1>
+  <p>
+  Tue Nov 1, Thu Nov 3, Mon Nov 7<br>
+  </p>
+  
+  <p>
+  Due date:<br>
+  ALL SECTIONS: Thu Nov 10 before 23:59
+  </p>
+</div>
+<!-- / Header block -->
+
+<!-- Single content block -->
+<div class="singlecontent">
+  <h2>Introduction</h2>
+
+  <p>
+  The purpose of this lab is to create a graphical user interface application
+  to play the game rock, paper, scissors against the computer.
+  In this lab you will:
+  </p>
+
+  <ul>
+  <li>create a graphical user interface application using the model-view-controller
+      pattern</li>
+  </ul>
+
+</div>
+
+<!-- Single content block -->
+<div class="singlecontent">
+  <h2>Question: Rock, paper, scissors</h2>
+
+<p>
+The game rock, paper, scissors is usually played between two players.
+To play a round of rock, paper, scissors, the players count aloud to three,
+each time raising
+one hand in a fist and bringing it down on the count, and on the count of
+three each player simultaneously forms one of three shapes with their
+outstretched hand. The shapes are <i>rock</i> (a fist), <i>paper</i> (a
+flat hand), or <i>scissors</i> (a V formed by the index and middle
+finger). The winner of the round is determined by the following rules:
+</p>
+
+<ul>
+<li>rock beats scissors (rock crushes scissors)</li>
+<li>paper beats rock (paper covers rock)</li>
+<li>scissors beats paper (scissors cut paper)</li>
+<li>the round results in a draw if both players choose the same hand</li>
+</ul>
+
+
+<p>
+For this lab you will implement a graphical user interface application
+using the model-view-controller design pattern to play rock, paper, scissors
+against the computer. The application looks like the following immediately
+after you run it:
+</p>
+
+<p>
+<img src="./EECS2030 Lab 5_files/rps-start.png"><br>
+</p>
+
+<p>
+The three buttons labelled ROCK, PAPER, and SCISSORS allow the player
+to play a hand. Pressing a button causes the model to generate a random
+hand for the computer which is compared against the hand played by the
+player. The results are shown using the four labels. The top-most
+label shows the hand played by the player. The second label shows the
+hand played by the computer. The third label shows who won the round.
+The fourth label shows the cumulative results of all of the rounds played
+so far.
+After playing many rounds against the computer the application looks
+like the following:
+</p>
+
+<p>
+<img src="./EECS2030 Lab 5_files/rps.png"><br>
+</p>
+
+
+<p>
+The APIs for all of the classes and interfaces associated with this lab
+can be found here:
+</p>
+
+<ul>
+<li><a href="https://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab5/doc/index.html">all of the lab APIs</a></li>
+</ul>
+
+<p>
+<b>Pay attention to the package names!</b> All of your classes must be
+in the package <code>eecs2030.lab5</code>
+</p>
+
+<p>
+You are provided with partial or complete implementations of the following
+classes:
+</p>
+
+<ul>
+<li><a href="https://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab5/RPSView.java.txt"><code>RPSView.java</code> partial implementation</a></li>
+<li><a href="https://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab5/RPSModel.java.txt"><code>RPSModel.java</code> partial implementation</a></li>
+<li><a href="https://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab5/RPSController.java.txt"><code>RPSController.java</code> partial implementation</a></li>
+<li><a href="https://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab5/RPSGame.java.txt"><code>RPSGame.java</code> partial implementation</a></li>
+<li><a href="https://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab5/RPSUtils.java.txt"><code>RPSUtils.java</code> complete implementation</a></li>
+</ul>
+
+<p>
+The class <code>RPSUtils</code> contains definitions of string constants
+that are used by the model, view, and controller.
+The remaining classes are heavily documented with instructions for completing them.
+I recommend completing them in the order view, model, controller, game.
+<code>RPSView</code> has a main method that you can run at any time to
+see your view (pressing the buttons won't do anything; you need to
+complete all of the classes to produce a runnable game). To run the finished
+program you should run the class <code>RPSGame</code>.
+</p>
+
+<p>
+The view requires that you make labels having a nice border. To do so, you
+should use the <code>javax.swing.BorderFactory</code> class to create a
+border that can be added to a label. For example, to add a border to
+the view label that describes the hand played by the player you would write:
+</p>
+
+<pre>this.player.setBorder(BorderFactory
+                .createEtchedBorder(EtchedBorder.LOWERED));
+</pre>
+
+<p>
+You can play the completed game by running the following
+program in the EECS Prism lab:
+</p>
+
+<pre>java -jar /cse/dept/www/course/2030/labs/lab5/RPS.jar
+</pre>
+
+
+
+</div>
+<!-- / Single content block -->
+
+
+
+
+<!-- Single content block -->
+<div class="singlecontent">
+  <h2>Submitting</h2>
+
+<p>Testers will be provided shortly; wait for the Moodle announcement
+before submitting your work.</p>
+  
+<p>
+Submit your program when you are finished:</p>
+
+<pre>submit 2030 lab5 RPSModel.java RPSView.java RPSController.java RPSGame.java
+</pre>
+
+<p>
+or if you are working in a group:</p>
+
+<pre>submit 2030 lab5 RPSModel.java RPSView.java RPSController.java RPSGame.java group.txt
+</pre>
+
+<p>
+Instructions for submitting from outside the lab 
+<a href="https://wiki.eecs.yorku.ca/course_archive/2016-17/F/2030/howto_submit">
+can be found here.</a>
+</p>
+
+</div>
+<!-- / Single content block -->
+
+
+
+
+
+<!-- Footer block -->
+<div class="footer">
+  <p>Burton Ma | Template design by <a href="http://andreasviklund.com/">Andreas Viklund</a></p>
+</div>
+<!-- / Footer block -->
+
+</div>
+<!-- / Layout setting -->
+
+
+</body></html>

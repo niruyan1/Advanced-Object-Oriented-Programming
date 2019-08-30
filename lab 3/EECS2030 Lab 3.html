@@ -1,0 +1,469 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0075)https://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab3/lab3.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="author" content="Burton Ma">
+  <title>EECS2030 Lab 3</title>
+  <style>
+*{margin:0;padding:0;}
+body{background:#d2d4d5;color:#303030;font:100% Verdana,Tahoma,Sans-Serif;text-align:center;}
+p{font-size:1em;margin:0 0 16px;}
+p.tt{font-size: 10em; font: "Courier New",Courier,monospace;}
+a{color:#00f;text-decoration:none;}
+a:hover{color:#88f;text-decoration:underline;}
+h1{font-size:1.6em;margin:0 0 8px;}
+h2{font-size:1.4em;margin:0 0 8px;}
+h3{font-size:1.2em;margin:0 0 8px;}
+ol
+{
+font-size:1em;
+padding: 0;
+margin-left: 3em;
+margin-bottom: 1ex;
+}
+ul
+{
+font-size:1em;
+padding: 0;
+margin-left: 3em;
+margin-bottom: 1ex;
+}
+li
+{
+margin: 0 0 1ex 0;
+}
+code
+{
+  font-weight: bold;
+  font-size: 120%;
+}
+table
+{
+margin-left: 0em;
+}
+
+td
+{
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+}
+
+.btt
+{ 
+  font-size:1.2em;
+  font-weight: bold;
+  font-family: "Courier New",Courier,monospace;
+}
+
+td.btt
+{ 
+  font-size:1.1em;
+  font-weight: bold;
+  font-family: "Courier New",Courier,monospace;
+}
+
+math {
+  padding-top: 1em;
+}
+
+mtd {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.red
+{
+color: red;
+}
+
+.blue
+{
+color: blue;
+}
+
+pre {
+ font-size: 120%;
+ font-weight: bold;
+ line-height: 120%;
+ margin: 1em;
+ padding-top: 0.2em;
+ padding-bottom: 0.2em;
+ padding-left: 1em;
+ padding-right: 1em;
+ border-style: solid;
+ border-left-width: 1em;
+ border-top-width: thin;
+ border-right-width: thin;
+ border-bottom-width: thin;
+ border-color: #95ABD0;
+ color: #000000;
+ background-color: #FFFFFF;
+}
+
+#container{background:#fff;margin:20px auto;padding:10px 10px 1px;text-align:left;width:1100px;}
+
+.header{background:#d2d4d5;clear:both;margin:0 0 10px;padding:10px;}
+.header h1{font-size:1.8em;letter-spacing:-1px;margin:0;padding:10px 0px 10px 0px;color:#ffffff;}
+.header p{font-size:1.25em;font-weight:700;margin:0;padding:0 0 10px 10px;}
+
+.mainmenu{clear:both;margin:0 0 10px;}
+.mainmenu ul{background:#f0f0f0;list-style:none;width:100%;}
+.mainmenu li{float:left;list-style:none;margin:0 0 10px;}
+.mainmenu li a{background:#f0f0f0;border-right:10px solid #fff;display:block;float:left;font-size:1.1em;font-weight:700;padding:6px 10px;}
+.mainmenu li a:hover{background:#f5e9d9;display:block;padding:6px 10px;}
+
+.breadcrumbs{background:#f0f0f0;clear:both;font-size:1.1em;font-weight:700;margin:0 0 10px;padding:10px;text-decoration:none;}
+.breadcrumbs p{margin:0;}
+
+.headline{border-left:20px solid #d56e30;clear:both;margin:0 0 10px;padding:0 10px;}
+.headline h1{margin:0;}
+
+.singlecontent{background:#f0f0f0;clear:both;line-height:1.4em;margin:0 0 10px;padding:10px 10px 1px;}
+
+.doublecontent{background:#f0f0f0;clear:both;line-height:1.4em;margin:0 0 10px;padding:10px 10px 1px;}
+.doubleleft{float:left;width:39%;}
+.doubleright{float:right;width:57%;}
+
+.footer{background:#f0f0e0;clear:both;color:gray;margin:0 0 10px;padding:10px;text-align:center;}
+.footer p{margin:0;}
+
+.clear{clear:both;}
+</style>
+</head>
+
+<body>
+<!-- Layout setting -->
+<div id="container">
+
+<!-- Header block -->
+<div class="header">
+  <h1>EECS2030 Lab 3</h1>
+  <p>
+  Thu Oct 6, Tue Oct 11, Mon Oct 16<br>
+  </p>
+  
+  <p>
+  Due date:<br>
+  ALL SECTIONS: Tue Oct 18 before 23:59
+  </p>
+</div>
+<!-- / Header block -->
+
+<!-- Single content block -->
+<div class="singlecontent">
+  <h2>Introduction</h2>
+
+  <p>
+  The purpose of this lab is to implement a class that uses aggregation and composition.
+  This lab also introduces the concept of recursion and uses your implemented class
+  in a recursive method to draw a version of the dragon curve.
+  </p>
+  
+
+
+</div>
+
+
+<!-- Single content block -->
+<div class="singlecontent">
+  <h2>Question 1: Implement a turtle class</h2>
+
+<p>
+<em>This lab has you implement the <code>Turtle</code> class that was
+used in Lab 2 to draw the Koch snowflake. Your implementation will
+use the <code>Point2</code> and <code>Vector2</code> classes from
+Lab 2, which we provide for you in the form of a jar file.</em>
+</p>
+
+<p>
+Turtle graphics is a method for drawing geometric primitives
+(such as points, lines, and curves) in the Cartesian (xy) plane.
+<a href="http://en.wikipedia.org/wiki/Logo_%28programming_language%29">
+Logo</a> was one of the early computer languages designed for educational
+purposes, and it had turtle graphics as one of its main features.
+</p>
+
+<p>
+In turtle graphics, the client has control of a cursor (the turtle)
+that responds to commands such as "move forward 1.5 units", "turn
+right", "turn left", and "turn 45 degrees". As the turtle moves,
+it leaves behind a trail using a pen; the pen can have fields
+such as colour and radius to control the trail colour and thickness.
+</p>
+
+<p>
+The turtle needs fields to represent its position in the plane,
+the direction that it is facing, and the pen color. The position can be represented
+using a <code>Point2</code> object, and the direction can be represented as an
+angle between -360.0 and 360.0 degrees (measured counterclockwise from
+the positive x axis). The pen color is represented using a
+<code>java.awt.Color</code> object. <b>Your class should use composition
+to manage the <code>Point2</code> object and aggregation to manage
+the <code>java.awt.Color</code> object.</b>
+</p>
+
+<p>
+Implement a <code>Turtle</code> class that supports turtle graphics.
+Our implementation uses
+the <code>StdDraw</code> class from the textbook
+<em>Introduction to Programming in Java:
+An Interdisciplinary Approach</em> by Robert Sedgewick and Kevin Wayne.
+<code>StdDraw</code> provides the capability to easily create simple
+drawings in a Java program. <code>StdDraw</code> uses an Cartesian
+coordinate system with the bottom left corner of the window having
+coordinates (0.0, 0.0) and the top right corner of the window having
+coordinates (1.0, 1.0).
+</p>
+
+
+<h3>Getting started</h3>
+
+<p>
+Here are some resources needed for this lab:
+</p>
+<ul>
+  <li><a href="https://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab3/lab3.jar">
+  jar file for <code>StdDraw</code>,
+  <code>Point2</code> and <code>Vector2</code>
+  </a>
+  </li>
+  <li><a href="https://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab3/doc/index.html">
+  APIs for <code>Turtle</code>, <code>Point2</code>, <code>Vector2</code>,
+  and <code>StdDraw</code>
+  </a>
+  </li>
+  <li><a href="https://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab3/dragon.html">
+  web page for the test program
+  </a>
+  </li>
+</ul>
+
+<ol>
+<li>In a Java project, create a package named <code>eecs2030.lab3</code>
+</li>
+<li>Create a new class named <code>Turtle</code> and copy the code shown
+below into the newly created class.
+</li>
+<li>Add the jar file to the project (under the <i>Project</i> menu,
+choose <i>Properties</i>; under <i>Java Build Path</i> choose
+<i>Add External JARs...</i> and select the lab3.jar file)
+</li><li>
+In the code given to you, there are several examples of methods documented
+with Javadoc comments. Study the examples to see how to document
+method parameters, method return values, and thrown exceptions. Also,
+observe that new paragraphs in Javadoc start with the HTML paragraph
+tab &lt;p&gt;
+</li>
+<li>
+To generate the documentation for your class, under the <i>Project</i>
+menu, choose <i>Generate Javadoc...</i>. In the window that appears,
+make sure that your <code>Turtle</code> class is selected and set the
+directory where you want the generated documentation to be saved to:<br>
+<img src="./EECS2030 Lab 3_files/generate_javadoc.png">
+</li>
+<li>Press <i>Finish</i>. If there are no errors in your Javadoc, then
+you should be able to open the file <code>index.html</code> in the
+directory you specified in the previous step.
+</li>
+<li>
+Complete the implementation of the <code>Turtle</code> class.
+We would like you to include Javadoc for all of your constructors
+(you may include Javadoc for your other methods, but this is not
+required). You should re-generate the documentation following
+steps 5 and 6 and check that your documentation matches that provided
+to you in this lab.<br><br>
+In the method named <code>move</code> you need to compute the point
+where the turtle stops after moving the given distance, and then
+set the turtle's position to this point. You can use
+methods in <code>Vector2</code> and <code>Point2</code> to help you
+compute the stopping point
+(<i>Hint: 
+the turtle knows what direction it is facing in and how far it was
+asked to move; <code>Vector2</code> contains a method to create 
+a unit vector pointing in a given direction, and another method
+that can scale the length of vector. <code>Point2</code> has a method
+that lets you add a vector to the point causing the point to move</i>).
+<br><br>
+Once you have set the turtle's new position, you need to ask
+<code>StdDraw</code> to draw a line between the turtle's original
+position and its new position using the turtle's current pen color.
+The methods <code>StdDraw.setPenColor</code> and <code>StdDraw.line</code>
+will allow you to draw the correctly colored line.
+</li>
+<li>
+Test your program using the client program found at the last link shown above
+(<code>DragonCurve.java</code>).
+</li>
+</ol>
+
+
+
+
+<p>
+
+</p>
+
+
+<pre>package eecs2030.lab3;
+
+import princeton.introcs.StdDraw;
+import java.awt.Color;
+
+/**
+ * A class that supports turtle graphics. A turtle moves between two points in a
+ * straight line drawing the line as it moves.
+ * 
+ * &lt;p&gt;
+ * A turtle has-a &lt;code&gt;Point2&lt;/code&gt; instance that represents the position of
+ * the turtle, and a &lt;code&gt;Color&lt;/code&gt; instance that represents the current pen
+ * color. The turtle maintains ownership of its position at all times.
+ * 
+ * 
+ * @author EECS2030 Fall 2016-17
+ * 
+ */
+public class Turtle {
+    private Point2 position;
+    private double angle;
+    private Color penColor;
+
+    
+    
+    /**
+     * Sets the pen color.
+     * 
+     * @param c
+     *            the new pen color
+     * @throws IllegalArgumentException
+     *            if the pen color c is null
+     */
+    public void setPenColor(Color c) {
+        
+    }
+
+    /**
+     * Compares this turtle with another object for equality. This turtle
+     * can be equal to only other turtles.
+     * 
+     * &lt;p&gt;
+     * Two turtles are equal if their positions, directions, and pen colors
+     * are all equal; otherwise, the turtles are not equal.
+     * 
+     * @param obj
+     *           An object to compare for equality.
+     * @return 
+     *           True if the position, direction, and pen color of this turtle
+     *           are equal to the position, direction, and pen color of the other
+     *           turtle, and false otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+        Turtle other = (Turtle) obj;
+        if (Double.doubleToLongBits(angle) != Double.doubleToLongBits(other.angle)) {
+            return false;
+        }
+        else if (!penColor.equals(other.penColor)) {
+            return false;
+        } 
+        else if (!position.equals(other.position)) {
+            return false;
+        }
+        return true;
+    }
+    
+    /**
+     * Returns a hash code for this turtle.
+     * 
+     * @return a hash code for this turtle 
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        long temp;
+        temp = Double.doubleToLongBits(angle);
+        result = prime * result + (int) (temp ^ (temp &gt;&gt;&gt; 32));
+        result = prime * result + ((penColor == null) ? 0 : penColor.hashCode());
+        result = prime * result + ((position == null) ? 0 : position.hashCode());
+        return result;
+    }
+    
+    /**
+     * Returns a string representation of this turtle. The string representation
+     * is:
+     * 
+     * &lt;ol&gt;
+     * &lt;li&gt;the position of the turtle (as given by &lt;code&gt;Point2.toString&lt;/code&gt;),
+     * followed by
+     * &lt;li&gt;a comma and a space, followed by
+     * &lt;li&gt;the direction, followed by
+     * &lt;li&gt;a space, the string "degrees", a space, and a comma, followed by
+     * &lt;li&gt;the pen color (as given by &lt;code&gt;Color.toString&lt;/code&gt;)
+     * &lt;/ol&gt;
+     * 
+     * @return a string representation of this turtle
+     */
+    @Override
+    public String toString() {
+        String s = String.format("%s, %f degrees, %s",
+                this.getPosition(), this.getAngle(), this.getPenColor());
+        return s;
+    }
+
+}
+</pre>
+
+</div>
+<!-- / Single content block -->
+
+
+
+<!-- Single content block -->
+<div class="singlecontent">
+  <h2>Submitting</h2>
+
+<p>
+Submit your program when you are finished:</p>
+
+<pre>submit 2030 lab3 Turtle.java
+</pre>
+
+<p>
+or if you are working in a group:</p>
+
+<pre>submit 2030 lab3 Turtle.java group.txt
+</pre>
+
+<p>
+Instructions for submitting from outside the lab 
+<a href="https://wiki.eecs.yorku.ca/course_archive/2016-17/F/2030/howto_submit">
+can be found here.</a>
+</p>
+
+</div>
+<!-- / Single content block -->
+
+
+
+
+<!-- Footer block -->
+<div class="footer">
+  <p>Burton Ma | Template design by <a href="http://andreasviklund.com/">Andreas Viklund</a></p>
+</div>
+<!-- / Footer block -->
+
+</div>
+<!-- / Layout setting -->
+
+
+</body></html>

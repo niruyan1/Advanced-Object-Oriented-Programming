@@ -1,0 +1,426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0075)https://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab4/lab4.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="author" content="Burton Ma">
+  <title>EECS2030 Lab 4</title>
+  <style>
+*{margin:0;padding:0;}
+body{background:#d2d4d5;color:#303030;font:100% Verdana,Tahoma,Sans-Serif;text-align:center;}
+p{font-size:1em;margin:0 0 16px;}
+p.tt{font-size: 10em; font: "Courier New",Courier,monospace;}
+a{color:#00f;text-decoration:none;}
+a:hover{color:#88f;text-decoration:underline;}
+h1{font-size:1.6em;margin:0 0 8px;}
+h2{font-size:1.4em;margin:0 0 8px;}
+h3{font-size:1.2em;margin:0 0 8px;}
+ol
+{
+font-size:1em;
+padding: 0;
+margin-left: 3em;
+margin-bottom: 1ex;
+}
+ul
+{
+font-size:1em;
+padding: 0;
+margin-left: 3em;
+margin-bottom: 1ex;
+}
+li
+{
+margin: 0 0 1ex 0;
+}
+code
+{
+  font-weight: bold;
+  font-size: 120%;
+}
+table
+{
+margin-left: 0em;
+}
+
+td
+{
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+}
+
+.btt
+{ 
+  font-size:1.2em;
+  font-weight: bold;
+  font-family: "Courier New",Courier,monospace;
+}
+
+td.btt
+{ 
+  font-size:1.1em;
+  font-weight: bold;
+  font-family: "Courier New",Courier,monospace;
+}
+
+math {
+  padding-top: 1em;
+}
+
+mtd {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.red
+{
+color: red;
+}
+
+.blue
+{
+color: blue;
+}
+
+pre {
+ font-size: 120%;
+ font-weight: bold;
+ line-height: 120%;
+ margin: 1em;
+ padding-top: 0.2em;
+ padding-bottom: 0.2em;
+ padding-left: 1em;
+ padding-right: 1em;
+ border-style: solid;
+ border-left-width: 1em;
+ border-top-width: thin;
+ border-right-width: thin;
+ border-bottom-width: thin;
+ border-color: #95ABD0;
+ color: #000000;
+ background-color: #FFFFFF;
+}
+
+
+pre.math {
+ font-size: 120%;
+ font-weight: bold;
+ line-height: 120%;
+ margin: 1em;
+ padding-top: 0.2em;
+ padding-bottom: 0.2em;
+ padding-left: 1em;
+ padding-right: 1em;
+ border-style: solid;
+ border-left-width: thin;
+ border-top-width: thin;
+ border-right-width: thin;
+ border-bottom-width: thin;
+ border-color: #95ABD0;
+ color: #000000;
+ background-color: #FFFFFF;
+ text-align:center;
+}
+
+#container{background:#fff;margin:20px auto;padding:10px 10px 1px;text-align:left;width:1100px;}
+
+.header{background:#d2d4d5;clear:both;margin:0 0 10px;padding:10px;}
+.header h1{font-size:1.8em;letter-spacing:-1px;margin:0;padding:10px 0px 10px 0px;color:#ffffff;}
+.header p{font-size:1.25em;font-weight:700;margin:0;padding:0 0 10px 10px;}
+
+.mainmenu{clear:both;margin:0 0 10px;}
+.mainmenu ul{background:#f0f0f0;list-style:none;width:100%;}
+.mainmenu li{float:left;list-style:none;margin:0 0 10px;}
+.mainmenu li a{background:#f0f0f0;border-right:10px solid #fff;display:block;float:left;font-size:1.1em;font-weight:700;padding:6px 10px;}
+.mainmenu li a:hover{background:#f5e9d9;display:block;padding:6px 10px;}
+
+.breadcrumbs{background:#f0f0f0;clear:both;font-size:1.1em;font-weight:700;margin:0 0 10px;padding:10px;text-decoration:none;}
+.breadcrumbs p{margin:0;}
+
+.headline{border-left:20px solid #d56e30;clear:both;margin:0 0 10px;padding:0 10px;}
+.headline h1{margin:0;}
+
+.singlecontent{background:#f0f0f0;clear:both;line-height:1.4em;margin:0 0 10px;padding:10px 10px 1px;}
+
+.doublecontent{background:#f0f0f0;clear:both;line-height:1.4em;margin:0 0 10px;padding:10px 10px 1px;}
+.doubleleft{float:left;width:39%;}
+.doubleright{float:right;width:57%;}
+
+.footer{background:#f0f0e0;clear:both;color:gray;margin:0 0 10px;padding:10px;text-align:center;}
+.footer p{margin:0;}
+
+.clear{clear:both;}
+</style>
+</head>
+
+<body>
+<!-- Layout setting -->
+<div id="container">
+
+<!-- Header block -->
+<div class="header">
+  <h1>EECS2030 Lab 4</h1>
+  <p>
+  Thu Oct 13, Mon Oct 17, Tue Oct 18<br>
+  </p>
+  
+  <p>
+  Due date:<br>
+  ALL SECTIONS: Tue Oct 25 before 23:59
+  </p>
+</div>
+<!-- / Header block -->
+
+<!-- Single content block -->
+<div class="singlecontent">
+  <h2>Introduction</h2>
+
+  <p>
+  The purpose of this lab is to partially implement the game Tetris.
+  In this lab you will:
+  </p>
+
+  <ul>
+  <li>create an abstract base class</li>
+  <li>implement some concrete child classes</li>
+  </ul>
+
+</div>
+
+<!-- Single content block -->
+<div class="singlecontent">
+  <h2>Question: Tetris</h2>
+
+<p>
+The game Tetris is a puzzle game where the player can move and spin falling
+blocks of various shapes. The goal of the game is to stack the blocks without
+leaving any gaps between the blocks.
+</p>
+
+<p>
+<img src="./EECS2030 Lab 4_files/tetris.png">
+</p>
+
+
+<p>
+If you have never played Tetris before, there is a
+<a href="https://tetris.wiki/Tetris.wiki">
+wiki with lots of information about the game.</a>
+</p>
+
+<p>
+There are 7 standard blocks (called Tetriminoes). The blocks are all
+defined on a square grid of size 3-by-3 or 4-by-4. In this lab,
+you are given a class <code>BlockGrid</code> that helps you describe
+the shape of a block. <code>BlockGrid</code> lets you get, set, and
+clear the individual grid positions. You specify the grid position
+using a pair of zero-based integer indices (the row index and the
+column index). The figure below shows the indices for each
+grid location on a 3-by-3 <code>BlockGrid</code>:
+</p>
+
+<p>
+<img src="./EECS2030 Lab 4_files/BlockGrid.png">
+</p>
+
+
+<p>
+The shape of each block can be represented using a <code>BlockGrid</code>
+object. The figure below shows the <code>BlockGrid</code> for the
+S-block; the white grid locations have the value <code>false</code>
+and the green grid locations have the value <code>true</code>.
+</p>
+
+<p>
+<img src="./EECS2030 Lab 4_files/SBlock.png">
+</p>
+
+
+<p>
+The player is able to spin a block into any of 4 possible orientations.
+The figures below show the 4 possible orientations for the I-block,
+J-block, and S-block. Column A show the blocks
+in their starting orientation. Column B shows the blocks after
+they have been spun once to the right. Column C shows the blocks after
+they have been spun again to the right. Column D shows the blocks after
+they have been spun again to the right. Spinning the blocks once more
+returns the blocks to Column A. If the player spins the blocks to the left
+starting from Column A, then the orientations are given by Column D, then
+Column C, then Column B, returning to Column A.
+</p>
+
+<p>
+<img src="./EECS2030 Lab 4_files/rotate.png"><br>
+</p>
+
+<p>
+The Tetris playing field is typically a grid with 20 rows and 10 columns.
+The location of a block on the field is given by the coordinates of the
+top-left corner of its grid. The image below shows a J-block with position
+<code>(6, 14)</code> on the playing field.
+</p>
+
+<p>
+<img src="./EECS2030 Lab 4_files/field.png"><br>
+</p>
+
+
+<p>
+For this lab you will implement three blocks: <code>IBlock</code>,
+<code>JBlock</code>, and <code>SBlock</code>. All Tetris blocks have
+three essential features: (1) they can be drawn on the playing field;
+(2) they can be moved; (3) they can be spun. There are elements of the
+game that can be drawn, but not moved or spun (such as the border
+of the playing field). Some versions of Tetris have drawable elements
+that can be moved but not spun (such as the climber in the Field Climber
+mode of Wii Tetris Party Deluxe). To implement these features, you will
+create three interfaces: <code>Drawable</code>,
+<code>Movable</code>, and <code>Spinnable</code>. Finally, there is
+information needed for every type of block such as the location of
+the block on the playing field, the color of the block, and the
+shape of the block; this information can be managed by an abstract
+base class <code>Block</code> that all blocks will extend. The relationships
+between the interfaces and classes are shown in the following UML
+diagram:
+</p>
+
+<p>
+<img src="./EECS2030 Lab 4_files/uml.png"><br>
+</p>
+
+<p>
+The APIs for all of the classes and interfaces associated with this lab
+can be found here:
+</p>
+
+<ul>
+<li><a href="https://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab4/doc/index.html">all of the lab APIs</a></li>
+</ul>
+
+<p>
+<b>Pay attention to the package names!</b> All of your classes must be
+in the package <code>eecs2030.lab4</code>
+</p>
+
+<p>
+You are provided with a partial implementation of <code>Block</code>,
+a Jar file containig the complete implementations of <code>BlockGrid</code>,
+<code>Point2</code>, and <code>StdDraw</code>, and a test program:
+</p>
+
+<ul>
+<li><a href="https://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab4/Block.java.txt"><code>Block.java</code> partial implementation</a></li>
+<li><a href="https://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab4/lab4.jar"><code>jar file</code></a></li>
+<li><a href="https://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab4/TetrisTest.java.txt"><code>TetrisTest.java</code></a></li>
+</ul>
+
+<p>
+The test program drops random blocks from the top of the playing field.
+You can move and spin the blocks (but not fast drop or stack the blocks)
+using the keyboard.
+The controls for the tester are as follows:
+</p>
+
+<ul>
+<li>J: move left</li>
+<li>L: move right</li>
+<li>I: spin left</li>
+<li>K: spin right</li>
+<li>S: stop/start the block falling</li>
+<li>Q: quit</li>
+</ul>
+
+<p>
+You can see what the tester should do by running the following
+program in the EECS Prism lab:
+</p>
+
+<pre>java -jar /cse/dept/www/course/2030/labs/lab4/TetrisTest.jar
+</pre>
+
+
+
+</div>
+<!-- / Single content block -->
+
+
+<!-- Single content block -->
+<div class="singlecontent">
+  <h2>Hints</h2>
+  
+<ol>
+<li>Complete the <code>Block</code> implementation first. The various
+<code>move</code> methods should adjust the position of the block.
+The <code>move</code> methods <i>do not</i> need to ensure that the block
+stays inside the playing field.
+Don't touch the abstract methods; the child classes
+<code>IBlock</code>, <code>JBlock</code>, and <code>SBlock</code>
+are responsible for implementing the abstract methods.
+</li>
+<li>Complete the <code>IBlock</code> class second. Note that this is
+the first time that we have asked you to decide what fields (attributes)
+the class needs. Remember that <code>IBlock</code> inherits all of the
+<code>protected</code> fields from <code>Block</code> so you should not
+include similar fields in <code>IBlock</code>. The fields that 
+<code>IBlock</code> requires are a field that can store the shape of
+an <code>IBlock</code> and a field that stores which orientation the
+block is currently in. If you read the lab carefully, you will find
+that we have given you a class for representing the shape of any block.
+</li>
+<li>The <code>spinLeft</code> and <code>spinRight</code> methods change
+the shape of the block. When a block is spun its orientation changes.
+</li>
+<li>Complete the <code>JBlock</code> and <code>SBlock</code> classes.
+They are very similar to <code>IBlock</code>.
+</li>
+</ol>
+  
+  
+</div>
+<!-- / Single content block -->
+
+<!-- Single content block -->
+<div class="singlecontent">
+  <h2>Submitting</h2>
+
+<p>
+Please wait until Mon Oct 17 to submit so that I can install
+some unit tests to check your work.
+</p>
+
+<p>
+Submit your program when you are finished:</p>
+
+<pre>submit 2030 lab4 Block.java IBlock.java JBlock.java SBlock.java
+</pre>
+
+<p>
+or if you are working in a group:</p>
+
+<pre>submit 2030 lab4 Block.java IBlock.java JBlock.java SBlock.java group.txt
+</pre>
+
+<p>
+Instructions for submitting from outside the lab 
+<a href="https://wiki.eecs.yorku.ca/course_archive/2016-17/F/2030/howto_submit">
+can be found here.</a>
+</p>
+
+</div>
+<!-- / Single content block -->
+
+
+
+
+
+<!-- Footer block -->
+<div class="footer">
+  <p>Burton Ma | Template design by <a href="http://andreasviklund.com/">Andreas Viklund</a></p>
+</div>
+<!-- / Footer block -->
+
+</div>
+<!-- / Layout setting -->
+
+
+</body></html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0075)https://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab2/lab2.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="author" content="Burton Ma">
+  <title>EECS2030 Lab 02</title>
+  <style>
+*{margin:0;padding:0;}
+body{background:#d2d4d5;color:#303030;font:100% Verdana,Tahoma,Sans-Serif;text-align:center;}
+p{font-size:0.9em;margin:0 0 16px;}
+p.tt{font-size: 10em; font: "Courier New",Courier,monospace;}
+a{color:#00f;text-decoration:none;}
+a:hover{color:#88f;text-decoration:underline;}
+h1{font-size:1.6em;margin:0 0 8px;}
+h2{font-size:1.4em;margin:0 0 8px;}
+h3{font-size:1.2em;margin:0 0 8px;}
+ol
+{
+font-size:0.9em;
+padding: 0;
+margin-left: 3em;
+margin-bottom: 1ex;
+}
+ul
+{
+font-size:0.9em;
+padding: 0;
+margin-left: 3em;
+margin-bottom: 1ex;
+}
+code
+{
+  font-weight: bold;
+  font-size: 120%;
+}
+table
+{
+margin-left: 0em;
+}
+
+td
+{
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+}
+
+.btt
+{ 
+  font-size:1.2em;
+  font-weight: bold;
+  font-family: "Courier New",Courier,monospace;
+}
+
+td.btt
+{ 
+  font-size:1.1em;
+  font-weight: bold;
+  font-family: "Courier New",Courier,monospace;
+}
+
+math {
+  padding-top: 1em;
+}
+
+mtd {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.red
+{
+color: red;
+}
+
+.blue
+{
+color: blue;
+}
+
+pre {
+ font-size: 120%;
+ font-weight: bold;
+ line-height: 120%;
+ margin: 1em;
+ padding-top: 0.2em;
+ padding-bottom: 0.2em;
+ padding-left: 1em;
+ padding-right: 1em;
+ border-style: solid;
+ border-left-width: 1em;
+ border-top-width: thin;
+ border-right-width: thin;
+ border-bottom-width: thin;
+ border-color: #95ABD0;
+ color: #000000;
+ background-color: #FFFFFF;
+}
+
+#container{background:#fff;margin:20px auto;padding:10px 10px 1px;text-align:left;width:1100px;}
+
+.header{background:#d2d4d5;clear:both;margin:0 0 10px;padding:10px;}
+.header h1{font-size:1.8em;letter-spacing:-1px;margin:0;padding:10px 0px 10px 0px;color:#ffffff;}
+.header p{font-size:1.25em;font-weight:700;margin:0;padding:0 0 10px 10px;}
+
+.mainmenu{clear:both;margin:0 0 10px;}
+.mainmenu ul{background:#f0f0f0;list-style:none;width:100%;}
+.mainmenu li{float:left;list-style:none;margin:0 0 10px;}
+.mainmenu li a{background:#f0f0f0;border-right:10px solid #fff;display:block;float:left;font-size:1.1em;font-weight:700;padding:6px 10px;}
+.mainmenu li a:hover{background:#f5e9d9;display:block;padding:6px 10px;}
+
+.breadcrumbs{background:#f0f0f0;clear:both;font-size:1.1em;font-weight:700;margin:0 0 10px;padding:10px;text-decoration:none;}
+.breadcrumbs p{margin:0;}
+
+.headline{border-left:20px solid #d56e30;clear:both;margin:0 0 10px;padding:0 10px;}
+.headline h1{margin:0;}
+
+.singlecontent{background:#f0f0f0;clear:both;line-height:1.4em;margin:0 0 10px;padding:10px 10px 1px;}
+
+.doublecontent{background:#f0f0f0;clear:both;line-height:1.4em;margin:0 0 10px;padding:10px 10px 1px;}
+.doubleleft{float:left;width:39%;}
+.doubleright{float:right;width:57%;}
+
+.footer{background:#f0f0e0;clear:both;color:gray;margin:0 0 10px;padding:10px;text-align:center;}
+.footer p{margin:0;}
+
+.clear{clear:both;}
+</style>
+</head>
+
+<body>
+<!-- Layout setting -->
+<div id="container">
+
+<!-- Header block -->
+<div class="header">
+  <h1>EECS030 Lab 02</h1>
+  <p>
+  Thu Sep 15, Mon Sep 19, and Tue Sep 20<br>
+  </p>
+  
+  <p>
+  Due date:<br>
+  ALL SECTIONS: Tue Oct 4 before 23:59
+  </p>
+  
+</div>
+<!-- / Header block -->
+
+<!-- Single content block -->
+<div class="singlecontent">
+  <h2>Introduction</h2>
+
+  <p>
+  The goals of this lab are to:
+  </p>
+  
+  <ul>
+  <li>implement a small regular class, including obligatory methods and
+  <code>static</code> methods
+  </li>
+  
+  <li>test your implementations using JUnit
+  </li>
+  
+  <li>use your classes to produce a picture of a famous fractal
+  </li>
+  
+  </ul>
+  
+  <p>
+  <img src="./EECS2030 Lab 02_files/snowflake.gif">
+  </p>
+  
+
+</div>
+
+
+
+<!-- Single content block -->
+<div class="singlecontent">
+  <h2>2-dimensional vectors</h2>
+
+  <p>
+  This lab assumes that you are familiar with 2-dimensional
+  spatial vectors. If you are not familiar with the basic
+  mathematical operations that can be performed using vectors
+  you should review the material <a href="https://www.mathsisfun.com/algebra/vectors.html">found in this tutorial.</a>
+  </p>
+  
+  
+  <h3>Getting started</h3>
+  
+  <p>
+  To get started, you should do the following in eclipse:
+  </p>
+  
+  <ol>
+  
+  <li>
+  Create a new package called <code>eecs2030.lab2</code>
+  </li>
+  
+  <li>
+  In the package <code>eecs2030.lab2</code> create a new Java class named
+  <code>Vector2</code>. Replace the automatically created
+  contents of <code>Vector2</code>
+  <a href="https://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab2/Vector2.java.txt">
+  with the contents of this file</a>. Use cut-and-paste, don't try typing it all in!
+  </li>
+  
+  <li>
+  Create a new class for the unit tester. Do this by right-clicking on
+  <code>Vector2.java</code> in the <i>Package Explorer</i> on the left-hand
+  side of the eclipse IDE, and selecting <i>New -&gt; JUnit test case</i>. A
+  dialog window will appear with the title <i>New JUnit Test Case</i>; the
+  name of the test case should be <code>Vector2Test</code>. Click
+  the <i>Finish</i> button.
+  </li>
+  
+  <li>
+  Replace the automatically created
+  contents of <code>Vector2Test</code>
+  <a href="https://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab2/Vector2Test.java.txt">
+  with the contents of this file</a>. Use cut-and-paste, don't try typing it all in!
+  </li>
+  </ol>
+  
+  <p>&nbsp;
+  </p>
+  
+  
+  <h3>Inspect the API</h3>
+  
+  <ol>
+  <li><a href="https://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab2/doc/eecs2030/lab2/Vector2.html">
+      Study the API for <code>Vector2</code></a>.
+      Recall that the API for a class typically shows all of the <code>public</code>
+      features of a class. You should see that <code>Vector2</code> has
+      three constructors, four <code>static</code> methods, and thirteen non-static
+      methods. Make sure that you understand the API for each method.
+  </li>
+  </ol>
+  
+  <p>&nbsp;
+  </p>
+  
+  
+  
+  <h3>Add the constructors</h3>
+  
+  <ol>
+  <li>
+  To the class <code>Vector2</code>, add the three constructors. Recall that
+  the job of a constructor is to set the values of the fields of the object
+  that is being constructed. In this case, your constructors should set the
+  values of <code>this.x</code> and <code>this.y</code>; this task
+  is very similar to the task you completed last week for the
+  <code>Point2</code> class.
+  </li>
+  
+  <li>
+  Use the unit tester to test your constructors as you complete them.
+  </li>
+  </ol>
+  
+  <p>&nbsp;</p>
+  
+  
+  <h3>Add the methods</h3>
+  
+  <ol>
+  <li>
+  Add the methods of the class one at a time. Read the API of each method
+  to guide your implementation.
+  </li>
+  <li>
+  Use the unit tester to test your methods as you complete them.
+  </li>
+  </ol>
+  
+
+    
+  <p>&nbsp;</p>
+  
+  <h3>Make a picture</h3>
+  
+  <p>
+  The Koch snowflake is an example of a fractal curve; the shape of the curve
+  appears the same no matter how far you zoom in on the curve.
+  <a href="https://en.wikipedia.org/wiki/Koch_snowflake">Wikipedia page</a>
+  presents a concise description of the Koch snowflake with some interesting
+  illustrations of the snowflake and related curves.
+  </p>
+  
+  <p>
+  The <code>Vector2</code> class can be used by a second class (which you
+  might implement in a future lab) to draw an approximation of the
+  Koch snowflake (actually six overlapping snowflakes).
+  </p>
+  
+  <ol>
+  <li><a href="https://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab2/lab2.jar">Download this jar file</a> and add it to your project:
+      <ol>
+      <li>select the <code>Project</code> menu</li>
+      <li>select <code>Properties</code></li>
+      <li>on the left side of the dialog that appears, select <code>Java Build Path</code></li>
+      <li>on the right, select the <code>Libraries</code> tab</li>
+      <li>click the <code>Add External JARs...</code> button</li>
+      <li>add the jar file you downloaded
+      </li></ol>
+  </li>
+  <li>
+  Add a new class named <code>KochSnowflake</code> to the <code>eecs2030.lab2</code>
+  package. Replace the automatically created
+  contents of <code>KochSnowflake</code>
+  <a href="http://www.eecs.yorku.ca/course_archive/2016-17/F/2030/labs/lab2/KochSnowflake.java.txt">
+  with the contents of this file</a>. 
+  </li>
+  
+  <li>
+  Run the program to generate an image of the Koch snowflake.
+  </li>
+  
+  </ol>
+  
+</div>  
+
+
+
+
+<!-- Single content block -->
+<div class="singlecontent">
+  <h2>Submit for students NOT working in a group</h2>
+
+  <p>
+  If you are <i>not</i> working in a group, submit your solution using the <code>submit</code> command. Remember that
+     you first need to find your workspace directory, then you need to find
+     your project directory. In your project directory, your files will be
+     located in the directory <code>src/eecs2030/lab1</code></p>
+     
+<pre>submit 2030 lab2 Vector2.java
+</pre>
+
+</div>
+
+<!-- Single content block -->
+<div class="singlecontent">
+  <h2>Submit for students working in a group</h2>
+  <p>
+  If you are working in a group, create a plain text file named
+  <code>group.txt</code>. You can do this in eclipse using the menu
+  <i>File -&gt; New -&gt; File</i>. Type your login names into the file
+  with each login name on its own line. For example, if the students
+  with login names
+  <code>rey</code>, <code>finn</code>, and <code>dameronp</code>,
+  worked in a group the contents of <code>group.txt</code> would
+  be:
+  </p>
+
+<pre>rey
+finn
+dameronp
+</pre>
+
+  <p>Submit your solution using the <code>submit</code> command. Remember that
+     you first need to find your workspace directory, then you need to find
+     your project directory. In your project directory, your files will be
+     located in the directory <code>src/eecs2030/lab1</code></p>
+     
+<pre>submit 2030 lab2 Vector2.java group.txt
+</pre>
+
+</div>
+
+
+<!-- Single content block -->
+<div class="singlecontent">
+  <h2>Submit from outside of the lab</h2>
+
+  <p>
+  The process for submitting from outside of the Prism lab involves the
+  following steps:
+  </p>
+
+  <ol>
+  <li>transfer the files from your computer to the undergraduate EECS server red.eecs.yorku.ca
+  </li>
+  <li>remotely log in to your EECS account
+  </li>
+  <li>submit your newly transferred files in your remote login session
+  </li>
+  <li>repeat Steps 1 and 3 as required
+  </li>
+  </ol>
+  
+  <p>
+  Windows users will likely need to install additional software first.
+  Mac users have all of the required software as part of MacOS.
+  </p>
+
+  <p>
+  <a href="https://wiki.eecs.yorku.ca/course_archive/2016-17/F/2030/howto_submit">Detailed instructions are here.</a>
+  </p>
+
+  
+</div>
+
+
+<!-- Footer block -->
+<div class="footer">
+  <p>Burton Ma | Template design by <a href="http://andreasviklund.com/">Andreas Viklund</a></p>
+</div>
+<!-- / Footer block -->
+
+</div>
+<!-- / Layout setting -->
+
+
+</body></html>
